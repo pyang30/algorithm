@@ -19,31 +19,22 @@ node * insert_node(node* root, int value)
         return root;
     }
 
-    p = root;
-    cur = p;
-    while (cur != NULL) {
-        p = cur;
-        if (cur->value > value) {
-            cur = cur->left;
-        } else if(cur->value < value) {
-            cur = cur->right;
-        } else {
-            printf("value already exists\n");
-            return root;
-        }
-
-    }   
-   
     n = (node*)malloc(sizeof(node));
     n->value = value;
     n->right = n->left = NULL;
-    
-    if (p->value > value) {
-        p->left = n;
-    }else {
-        p->right = n;
+
+    if (root->value == value) {
+        printf("value already exists\n");
+        return root;
     }
-    n->parent = p;
+
+    if (root->value > value) {
+        root->left = insert_node(root->left, value);
+        root->left->parent = root;
+    } else {
+        root->right = insert_node(root->right, value);
+        root->right->parent = root;
+    }
 
     return root; 
 }
