@@ -1,1 +1,1 @@
-this repo contains some algorithm when I used in work
+this repo contains some algorithm I used at work
